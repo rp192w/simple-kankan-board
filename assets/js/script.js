@@ -79,7 +79,7 @@ function handleAddTask(event) {
   taskList.push(newTask);
   localStorage.setItem('tasks', JSON.stringify(taskList));
   localStorage.setItem('nextId', JSON.stringify(nextId));
-
+  $('#addTaskForm')[0].reset();
   $('#formModal').modal('hide');
   renderTaskList();
 }
@@ -118,3 +118,4 @@ $(document).ready(function () {
 
   $('#addTaskForm').on('submit', handleAddTask);
 });
+
