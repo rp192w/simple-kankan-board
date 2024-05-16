@@ -73,6 +73,7 @@
   </div>
 
   <!-- Task Form Modal -->
+  <!-- Task Form Modal -->
   <div class="modal fade" id="formModal" tabindex="-1" aria-labelledby="formModalLabel" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
@@ -83,17 +84,19 @@
         <div class="modal-body">
           <!-- Add Task Form -->
           <form id="addTaskForm">
-            <div class="mb-3">
-              <label for="task-title" class="form-label">Title</label>
-              <input type="text" class="form-control" id="task-title" required>
+            <div class="row">
+              <div class="col-md-6 mb-3">
+                <label for="task-title" class="form-label">Title</label>
+                <input type="text" class="form-control" id="task-title" required>
+              </div>
+              <div class="col-md-6 mb-3">
+                <label for="task-deadline" class="form-label">Task Due Date</label>
+                <input type="text" class="form-control" id="task-deadline" required>
+              </div>
             </div>
             <div class="mb-3">
               <label for="task-description" class="form-label">Description</label>
               <textarea class="form-control" id="task-description" required></textarea>
-            </div>
-            <div class="mb-3">
-              <label for="task-deadline" class="form-label">Deadline</label>
-              <input type="text" class="form-control" id="task-deadline" required>
             </div>
             <button type="submit" class="btn btn-primary">Save Task</button>
           </form>
@@ -101,7 +104,6 @@
       </div>
     </div>
   </div>
-
   <!-- Scripts -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"

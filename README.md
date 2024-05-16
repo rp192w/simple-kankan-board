@@ -1,100 +1,56 @@
-# 05 Third-Party APIs: Task Board
+# Task Board Application
 
-## Your Task
+## Link to Deployed App
 
-Create a simple task board application that allows a team to manage project tasks by modifying starter code. This app will run in the browser and feature dynamically updated HTML and CSS powered by jQuery.
+<https://rp192w.github.io/simple-kankan-board/>
 
-You'll need to use the [Day.js](https://day.js.org/en/) library to work with dates. Be sure to read the documentation carefully and concentrate on using Day.js in the browser.
+## Overview
 
-## User Story
+This repository contains the code for a simple Kanban-style task board application that allows project teams to manage their tasks. The application provides features for adding, updating, and deleting tasks, as well as dragging and dropping tasks between different progress states. Tasks are persisted using localStorage and are color-coded based on their deadlines using Day.js.
 
-```md
-AS A project team member with multiple tasks to organize
-I WANT a task board 
-SO THAT I can add individual project tasks, manage their state of progress and track overall project progress accordingly
-```
+## File Structure
 
-## Acceptance Criteria
+### HTML Files
 
-```md
-GIVEN a task board to manage a project
-WHEN I open the task board
-THEN the list of project tasks is displayed in columns representing the task progress state (Not Yet Started, In Progress, Completed)
-WHEN I view the task board for the project
-THEN each task is color coded to indicate whether it is nearing the deadline (yellow) or is overdue (red)
-WHEN I click on the button to define a new task
-THEN I can enter the title, description and deadline date for the new task into a modal dialog
-WHEN I click the save button for that task
-THEN the properties for that task are saved in localStorage
-WHEN I drag a task to a different progress column
-THEN the task's progress state is updated accordingly and will stay in the new column after refreshing
-WHEN I click the delete button for a task
-THEN the task is removed from the task board and will not be added back after refreshing
-WHEN I refresh the page
-THEN the saved tasks persist
-```
+- **index.html**: The main page that displays the task board with columns for different task states (To Do, In Progress, Done).
 
-The following animation demonstrates the application functionality:
+### CSS Files
 
-![A user adds three tasks to the task board and changes the state of two of them to in progress and then completion. The user then deletes the two cards in the done column.](./Assets/05-third-party-apis-homework-demo.gif)
+- **style.css**: General styles for the task board application, including styles for task cards and columns.
 
-## Grading Requirements
+### JavaScript Files
 
-> **Note**: If a Challenge assignment submission is marked as “0”, it is considered incomplete and will not count towards your graduation requirements. Examples of incomplete submissions include the following:
->
-> * A repository that has no code
->
-> * A repository that includes a unique name but nothing else
->
-> * A repository that includes only a README file but nothing else
->
-> * A repository that only includes starter code
+- **script.js**: Contains JavaScript code for handling task creation, updates, deletion, and drag-and-drop functionality. It also manages localStorage interactions and date handling using Day.js.
 
-This Challenge is graded based on the following criteria:
+## Setup and Running
 
-### Technical Acceptance Criteria: 40%
+To run the application, go to the provided URL or clone the repo and open `index.html` in a web browser. Ensure your browser supports localStorage, which is required to persist tasks.
 
-* Satisfies all of the above acceptance criteria plus the following:
+## Task Board (index.html)
 
-  * Uses the Day.js library to work with dates
+This page includes:
 
-### Deployment: 32%
+- **Add Task Button**: Opens a modal dialog to add a new task with a title, description, and deadline.
+- **Task Columns**: Displays tasks in three columns based on their progress state:
+  - **To Do**: Tasks that are not yet started.
+  - **In Progress**: Tasks that are currently being worked on.
+  - **Done**: Tasks that are completed.
+- **Task Cards**: Each task is displayed as a card within the appropriate column, with color coding based on the task's deadline:
+  - Yellow for tasks nearing their deadline.
+  - Red for overdue tasks.
 
-* Application deployed at live URL
+### Task Form Modal
 
-* Application loads with no errors
+- **Title**: Input field for the task title.
+- **Description**: Text area for the task description.
+- **Deadline Date**: Input field for the task deadline date (with a date picker).
+- **Save Button**: Saves the task to localStorage and updates the task board.
 
-* Application GitHub URL submitted
+## Known Issues
 
-* GitHub repo contains application code
+- **Drag and Drop**: Ensure you drag tasks carefully to avoid accidental drops.
+- **LocalStorage**: Tasks will not persist if localStorage is disabled in your browser. Check your browser settings if tasks are not saving.
 
-### Application Quality: 15%
+## Screenshots
 
-* Application user experience is intuitive and easy to navigate
-
-* Application user interface style is clean and polished
-
-* Application resembles the mock-up functionality provided in the Challenge instructions
-
-### Repository Quality: 13%
-
-* Repository has a unique name
-
-* Repository follows best practices for file structure and naming conventions
-
-* Repository follows best practices for class/id naming conventions, indentation, quality comments, etc.
-
-* Repository contains multiple descriptive commit messages
-
-* Repository contains quality README file with description, screenshot, and link to deployed application
-
-## Review
-
-You are required to submit the following for review:
-
-* The URL of the deployed application
-
-* The URL of the GitHub repository, with a unique name and a README describing the project
-
-- - -
-© 2024 edX Boot Camps LLC. Confidential and Proprietary. All Rights Reserved.
+![Task Board Screenshot](./assets/images/screenshot.png)

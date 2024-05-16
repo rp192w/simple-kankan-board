@@ -11,15 +11,15 @@ function generateTaskId() {
 // Create a task card
 function createTaskCard(task) {
     // Determine the deadline class based on the task deadline.
-    // White if done, red if overdue, yellow if within 3 days.
+    // White if done, yellow if due today or within 3 days, red if overdue.
     let deadlineClass = '';
     const now = dayjs();
     if (task.status === 'done') {
         deadlineClass = 'bg-white';
+    } else if (dayjs(task.deadline).isSame(now, 'day') || (dayjs(task.deadline).isAfter(now) && dayjs(task.deadline).isBefore(now.add(3, 'day')))) {
+        deadlineClass = 'bg-warning';
     } else if (dayjs(task.deadline).isBefore(now)) {
         deadlineClass = 'bg-danger text-black';
-    } else if (dayjs(task.deadline).isBefore(now.add(3, 'day'))) {
-        deadlineClass = 'bg-warning';
     }
 
     // Return the HTML for the task card
