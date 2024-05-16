@@ -7,24 +7,30 @@ function generateTaskId() {
     return nextId++;
 }
 
+  
 // Create a task card
 function createTaskCard(task) {
+    // Determine the deadline class based on the task deadline.
+    // White if done, red if overdue, yellow if within 3 days.
     let deadlineClass = '';
     const now = dayjs();
-    if (dayjs(task.deadline).isBefore(now)) {
-        deadlineClass = 'bg-danger text-white';
+    if (task.status === 'done') {
+        deadlineClass = 'bg-white';
+    } else if (dayjs(task.deadline).isBefore(now)) {
+        deadlineClass = 'bg-danger text-black';
     } else if (dayjs(task.deadline).isBefore(now.add(3, 'day'))) {
         deadlineClass = 'bg-warning';
     }
-    
+
+    // Return the HTML for the task card
     return `<div id="task-${task.id}" class="task-card card mb-3 ${deadlineClass}">
             <div class="card-header bg-white">${task.title}</div>
         <div class="card-body">
             <p class="card-text">${task.description}</p>
             <p class="card-text">Deadline: ${task.deadline}</p>
             <button class="btn btn-danger delete-task" data-id="${task.id}">Delete</button>
-            </div>
-        </div>`;
+        </div>
+    </div>`;
 }
 
 // Render the task list and make cards draggable
@@ -100,6 +106,9 @@ function handleDrop(event, ui) {
   taskList = taskList.map(task => {
     if (task.id === taskId) {
       task.status = newStatus;
+      if (newStatus === 'done') {
+        task.deadlineClass = 'bg-white';
+      }
     }
     return task;
   });
