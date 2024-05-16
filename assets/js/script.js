@@ -7,11 +7,8 @@ function generateTaskId() {
     return nextId++;
 }
 
-  
-// Create a task card
-function createTaskCard(task) {
-    // Determine the deadline class based on the task deadline.
-    // White if done, yellow if due today or within 3 days, red if overdue.
+// Determine the deadline class, text class, and button class based on the task deadline.
+function determineClasses(task) {
     let deadlineClass = '';
     let textClass = '';
     let buttonClass = 'btn-danger';
@@ -27,6 +24,23 @@ function createTaskCard(task) {
         textClass = 'text-white';
         buttonClass = 'btn-danger text-white border-white';
     }
+    return { deadlineClass, textClass, buttonClass };
+}
+
+// Append the task card to the correct lane
+function appendTaskCard(taskCard, task) {
+    if (task.status === 'to-do') {
+        $('#todo-cards').append(taskCard);
+    } else if (task.status === 'in-progress') {
+        $('#in-progress-cards').append(taskCard);
+    } else if (task.status === 'done') {
+        $('#done-cards').append(taskCard);
+    }
+}
+
+// Create a task card
+function createTaskCard(task) {
+    const { deadlineClass, textClass, buttonClass } = determineClasses(task);
 
     // Return the HTML for the task card
     return `<div id="task-${task.id}" class="task-card card mb-3 ${deadlineClass}">
@@ -47,13 +61,7 @@ function renderTaskList() {
 
   taskList.forEach(task => {
     const taskCard = createTaskCard(task);
-    if (task.status === 'to-do') {
-      $('#todo-cards').append(taskCard);
-    } else if (task.status === 'in-progress') {
-      $('#in-progress-cards').append(taskCard);
-    } else if (task.status === 'done') {
-      $('#done-cards').append(taskCard);
-    }
+    appendTaskCard(taskCard, task);
   });
 
   $('.task-card').draggable({
@@ -112,9 +120,6 @@ function handleDrop(event, ui) {
   taskList = taskList.map(task => {
     if (task.id === taskId) {
       task.status = newStatus;
-      if (newStatus === 'done') {
-        task.deadlineClass = 'bg-white';
-      }
     }
     return task;
   });
@@ -133,4 +138,3 @@ $(document).ready(function () {
 
   $('#addTaskForm').on('submit', handleAddTask);
 });
-

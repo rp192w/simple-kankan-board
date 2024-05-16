@@ -4,6 +4,10 @@
 
 <https://rp192w.github.io/simple-kankan-board/>
 
+## Disclosure
+
+ChatGPT was used to create a mock README for a general outline of a README file. I then modified it to fit my needs for this challenge.
+
 ## Overview
 
 This repository contains the code for a simple Kanban-style task board application that allows project teams to manage their tasks. The application provides features for adding, updating, and deleting tasks, as well as dragging and dropping tasks between different progress states. Tasks are persisted using localStorage and are color-coded based on their due date using Day.js.
