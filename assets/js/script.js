@@ -13,22 +13,28 @@ function createTaskCard(task) {
     // Determine the deadline class based on the task deadline.
     // White if done, yellow if due today or within 3 days, red if overdue.
     let deadlineClass = '';
+    let textClass = '';
+    let buttonClass = 'btn-danger';
     const now = dayjs();
     if (task.status === 'done') {
         deadlineClass = 'bg-white';
+        textClass = 'text-dark';
     } else if (dayjs(task.deadline).isSame(now, 'day') || (dayjs(task.deadline).isAfter(now) && dayjs(task.deadline).isBefore(now.add(3, 'day')))) {
         deadlineClass = 'bg-warning';
+        textClass = 'text-white';
     } else if (dayjs(task.deadline).isBefore(now)) {
-        deadlineClass = 'bg-danger text-black';
+        deadlineClass = 'bg-danger';
+        textClass = 'text-white';
+        buttonClass = 'btn-danger text-white border-white';
     }
 
     // Return the HTML for the task card
     return `<div id="task-${task.id}" class="task-card card mb-3 ${deadlineClass}">
-            <div class="card-header bg-white">${task.title}</div>
+            <div class="card-header ${textClass}"><h4>${task.title}</h4></div>
         <div class="card-body">
-            <p class="card-text">${task.description}</p>
-            <p class="card-text">Deadline: ${task.deadline}</p>
-            <button class="btn btn-danger delete-task" data-id="${task.id}">Delete</button>
+            <p class="card-text ${textClass}">${task.description}</p>
+            <p class="card-text ${textClass}">Deadline: ${task.deadline}</p>
+            <button class="btn ${buttonClass} delete-task" data-id="${task.id}">Delete</button>
         </div>
     </div>`;
 }

@@ -6,7 +6,7 @@
 
 ## Overview
 
-This repository contains the code for a simple Kanban-style task board application that allows project teams to manage their tasks. The application provides features for adding, updating, and deleting tasks, as well as dragging and dropping tasks between different progress states. Tasks are persisted using localStorage and are color-coded based on their deadlines using Day.js.
+This repository contains the code for a simple Kanban-style task board application that allows project teams to manage their tasks. The application provides features for adding, updating, and deleting tasks, as well as dragging and dropping tasks between different progress states. Tasks are persisted using localStorage and are color-coded based on their due date using Day.js.
 
 ## File Structure
 
@@ -30,20 +30,20 @@ To run the application, go to the provided URL or clone the repo and open `index
 
 This page includes:
 
-- **Add Task Button**: Opens a modal dialog to add a new task with a title, description, and deadline.
+- **Add Task Button**: Opens a modal dialog to add a new task with a title, description, and due date.
 - **Task Columns**: Displays tasks in three columns based on their progress state:
   - **To Do**: Tasks that are not yet started.
   - **In Progress**: Tasks that are currently being worked on.
   - **Done**: Tasks that are completed.
-- **Task Cards**: Each task is displayed as a card within the appropriate column, with color coding based on the task's deadline:
-  - Yellow for tasks nearing their deadline.
+- **Task Cards**: Each task is displayed as a card within the appropriate column, with color coding based on the task's due date:
+  - Yellow for tasks nearing their due date (within 3 days).
   - Red for overdue tasks.
 
 ### Task Form Modal
 
 - **Title**: Input field for the task title.
+- **Task Due Date**: Input field for the task due date (with a date picker).
 - **Description**: Text area for the task description.
-- **Deadline Date**: Input field for the task deadline date (with a date picker).
 - **Save Button**: Saves the task to localStorage and updates the task board.
 
 ## Known Issues
